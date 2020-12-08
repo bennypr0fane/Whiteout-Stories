@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-button routerLink="" routerDirection="root">
+    <ion-icon name="home"></ion-icon>
+  </ion-button>
+  <ion-toolbar>
+    <ion-title>
+      Spiel-Einstellungen
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form #f="ngForm" (ngSubmit)="save(f)" novalidate>
+    <ion-input name="numberOfPlayers" required [ngModel]="gameData.numberOfPlayers" #numberOfPlayers="ngModel" autofocus="true"
+               clear-input="true" inputmode="numeric" type="number" placeholder="Zahl eingeben">
+      Zahl der Spieler:
+    </ion-input>
+    <ion-item *ngIf="numberOfPlayers.touched && !numberOfPlayers.valid">
+      <ion-text color="danger">Zahl der Spieler angeben!</ion-text>
+    </ion-item>
+    <ion-item>Geschichtenlänge:</ion-item>
+    <ion-item id="zeichen-button" *ngIf="zeichenButtonVisible" (click)="showZeichenInput()">
+      <ion-button>
+        Anzahl Zeichen:
+        <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-input name="characterLimit" [ngModel]="gameData.characterLimit" #characterLimit="ngModel" id="zeichen-input" *ngIf="zeichenInputVisible" clear-input="true" inputmode="numeric" value="2000"
+               type="number">Anzahl Zeichen
+    </ion-input>
+    <ion-item *ngIf="oderVisible">oder</ion-item>
+
+    <ion-item id="runden-button" *ngIf="rundenButtonVisible" (click)="showRundenInput()">
+      <ion-button>
+        Anzahl Runden:
+        <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-input name="numberOfRounds" [ngModel]="gameData.numberOfRounds" id="runden-input" *ngIf="rundenInputVisible" clear-input="true" inputmode="numeric" type="number">Anzahl
+      Runden:
+    </ion-input>
+
+
+
+    <ion-button [disabled]="!f.valid" type="submit">Speichern</ion-button>
+
+  </form>
+</ion-content>

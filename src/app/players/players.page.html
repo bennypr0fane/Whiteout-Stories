@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+
+        <ion-button routerLink="" routerDirection="root">
+            <ion-icon name="home"></ion-icon>
+        </ion-button>
+
+    <ion-toolbar>
+        <ion-title>
+            Namen der Spieler
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<!--  got players from form {"0":"abc","1":"ddef"}-->
+<ion-content [fullscreen]="true">
+    <form #f="ngForm" (ngSubmit)="save(f)" novalidate>
+
+
+        <ion-item *ngFor="let player of players ;index as i">
+
+                <ion-input name="name{{player.id}}"  required type="text" [(ngModel)]="player.name"
+                           placeholder="Name eingeben.">
+                    <ion-label [style.background-color]="player.color">Spieler {{player.id + 1}}</ion-label>
+                </ion-input>
+
+        </ion-item>
+
+
+        <ion-button [disabled]="!f.valid" type="submit">Speichern</ion-button>
+    </form>
+</ion-content>

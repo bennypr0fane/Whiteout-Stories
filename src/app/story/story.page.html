@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+    <ion-button routerLink="" routerDirection="root">
+        <ion-icon name="home"></ion-icon>
+    </ion-button>
+    <ion-toolbar>
+
+        <ion-item *ngIf="keys !=undefined && keys.length >0">
+            <ion-label>Previous Stories</ion-label>
+            <ion-select placeholder="Select previous game" name="key"  #key="ngModel"  id="key" [ngModel]="selectedGameId" (ionChange)="showGame(key.value)" >
+
+                <ion-select-option *ngFor="let key of keys"  >
+                    {{key}}
+                </ion-select-option>
+
+            </ion-select>
+        </ion-item>
+        <ion-title>
+            Die ganze Geschichte:
+        </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content >
+    <ion-card  *ngFor="let segment of segments">
+        <ion-card-header [style.background-color]="players[segment.playerId].color" >
+            <ion-card-subtitle>{{players[segment.playerId].name}}</ion-card-subtitle>
+          <ion-card-content>
+              {{segment.content}}
+          </ion-card-content>
+        </ion-card-header>
+    </ion-card>
+</ion-content>

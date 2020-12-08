@@ -1,0 +1,19 @@
+Zu speichern:
+
+Player:
+- name
+- ID
+(- color)
+
+GameData:
+- segments
+- numberOfPlayers
+- numberOfRounds
+- characterLimit
+- playerSequence
+
+
+Segment:
+- text
+- Player.ID
+- SequencePlayer

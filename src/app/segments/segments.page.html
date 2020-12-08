@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+    <ion-button routerLink="" routerDirection="root">
+        <ion-icon name="home"></ion-icon>
+    </ion-button>
+    <ion-toolbar>
+        <div *ngIf="player !=undefined">
+        <ion-title>
+            {{player.name}}, du kannst jetzt deinen Teil der Story schreiben
+        </ion-title>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div *ngIf="previousPlayer!=null && previousPlayer!= undefined">
+    <ion-text  aria-readonly="true"   [style.background-color]="previousPlayer.color"> {{previousPlayer.name}}</ion-text>
+    <ion-text  aria-readonly="true"   [style.background-color]="previousPlayer.color"> {{segment.playerId}}</ion-text>
+
+    <ion-textarea readonly="true" value="{{previousSegment.content}}" [style.background-color]="previousPlayer.color"></ion-textarea>
+    </div>
+    <form #f="ngForm" (ngSubmit)="save(f)" novalidate>
+                <ion-textarea name="content"  required   [(ngModel)]="segment.content" [autofocus]="true"
+                           placeholder="Text eingeben.">
+                    <div *ngIf="player != undefined">
+                    <ion-label [style.background-color]="player.color"> {{player.name}}</ion-label>
+                    </div>
+                </ion-textarea>
+
+        <ion-button [disabled]="!f.valid" type="submit">Weitergeben</ion-button>
+    </form>
+
+    <ion-button  (click)="showConfirm()" color="danger" type="button"  >Story beenden</ion-button>
+</ion-content>
