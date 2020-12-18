@@ -1,7 +1,8 @@
 {
   "name": "Whiteout",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular",
   "id": "7f7121dd"
