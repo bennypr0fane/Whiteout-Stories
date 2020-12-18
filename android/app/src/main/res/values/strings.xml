@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Whiteout</string>
+    <string name="title_activity_main">Whiteout</string>
+    <string name="package_name">org.benopp.whiteout</string>
+    <string name="custom_url_scheme">org.benopp.whiteout</string>
+</resources>
