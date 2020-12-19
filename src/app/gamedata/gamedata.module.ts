@@ -5,13 +5,16 @@ import { FormsModule } from '@angular/forms';
 import { GamedataPage } from './gamedata.page';
 import { RouterModule } from '@angular/router';
 import { GamedataPageRoutingModule } from './gamedata-routing.module';
+import {QRScanner} from "@ionic-native/qr-scanner";
+
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
     RouterModule,
-    GamedataPageRoutingModule
+    GamedataPageRoutingModule,
+    QRScanner
   ],
   declarations: [GamedataPage]
 })

@@ -7,6 +7,7 @@ import { NgForm } from '@angular/forms';
 import { JsonObject } from '@angular/compiler-cli/ngcc/src/packages/entry_point';
 import { Segment } from '../segment';
 import { PlayerService } from '../player.service';
+import {QRScanner, QRScannerStatus} from "@ionic-native/qr-scanner/ngx";
 
 @Component({
   selector: 'app-story',
@@ -23,7 +24,10 @@ export class StoryPage implements OnInit {
   constructor(private storageService: StorageService,
               private route: ActivatedRoute,
               private router:Router,
-              private playerService: PlayerService) {
+              private playerService: PlayerService,
+              private qrScanner: QRScanner,
+              private qrScannerStatus: QRScannerStatus,
+  ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () =>  false;
   }
 
