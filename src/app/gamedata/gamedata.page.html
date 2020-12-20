@@ -1,14 +1,17 @@
 <ion-header [translucent]="true">
-  <ion-button routerLink="" routerDirection="root">
+  <ion-button *ngIf="isCameraMode">
+    <ion-icon name="cross" (click)="setCameraMode(false)"></ion-icon>
+  </ion-button>
+  <ion-button *ngIf="!isCameraMode" routerLink="" routerDirection="root">
     <ion-icon name="home"></ion-icon>
   </ion-button>
-  <ion-toolbar>
+  <ion-toolbar *ngIf="!isCameraMode">
     <ion-title>
       Spiel-Einstellungen
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content *ngIf="!isCameraMode">
   <form #f="ngForm" (ngSubmit)="save(f)" novalidate>
     <ion-input name="numberOfPlayers" required [ngModel]="gameData.numberOfPlayers" #numberOfPlayers="ngModel" autofocus="true"
                clear-input="true" inputmode="numeric" type="number" placeholder="Zahl eingeben">
